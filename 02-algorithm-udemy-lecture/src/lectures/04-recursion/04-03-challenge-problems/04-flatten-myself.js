@@ -13,21 +13,50 @@
  * @param { Array<any> } nestedArr
  * @returns { number[] }
  */
-export function flatten(nestedArr) {
-  // nestedArr 가 배열이 아니면, [nestedArr] 반환하기
-  if (!Array.isArray(nestedArr)) {
-    return [nestedArr];
-  }
+// export function flatten(nestedArr) {
+//   // nestedArr 가 배열이 아니면, [nestedArr] 반환하기
+//   if (!Array.isArray(nestedArr)) {
+//     return [nestedArr];
+//   }
 
+//   // 결과 배열 만들기
+//   let result = [];
+
+//   // nestedArr 를 순회하며,
+//   for (const value of nestedArr) {
+//     // 재귀 호출하고,
+//     const subArr = flatten(value);
+//     // 결과 배열에 concat 하기
+//     result = result.concat(subArr);
+//   }
+
+//   // 결과 배열 반환하기
+//   return result;
+// }
+
+/**
+ * 강의 풀이
+ * 
+ * NOTE => Base Case 가 없는 형태의 재귀 함수는 떠올리지 못했음
+ */
+export function flatten(nestedArr) {
   // 결과 배열 만들기
   let result = [];
 
   // nestedArr 를 순회하며,
-  for (const value of nestedArr) {
-    // 재귀 호출하고,
-    const subArr = flatten(value);
-    // 결과 배열에 concat 하기
-    result = result.concat(subArr);
+  for (const item of nestedArr) {
+    // nestedArr[i] 가 배열이라면,
+    if (Array.isArray(item)) {
+      // 재귀 호출하고,
+      const subArr = flatten(item);
+      // 결과 배열에 병합하기
+      result = result.concat(subArr);
+    }
+    // 아니라면,
+    else {
+      // 결과 배열에 push 하기
+      result.push(item);
+    }
   }
 
   // 결과 배열 반환하기

@@ -15,21 +15,46 @@
  * @param { string } str
  * @returns { boolean }
  */
+// export function isPalindrome(str) {
+//   // (Base Case) str.length < 2 라면, true 반환하기
+//   if (str.length < 2) {
+//     return true;
+//   }
+
+//   const first = str[0];
+//   const last = str[str.length - 1];
+//   const rest = str.slice(0, str.length - 1).slice(1);
+
+//   // (Base Case) str 첫번째 문자, 마지막 문자가 다르면, false 반환하기
+//   if (first !== last) {
+//     return false;
+//   }
+
+//   // isPalindrome 에 str 의 첫번째 문자, 마지막 문자를 제거하고 호출하고, 반환하기
+//   return isPalindrome(rest);
+// };
+
+/**
+ * 강의 풀이
+ */
 export function isPalindrome(str) {
-  // (Base Case) str.length < 2 라면, true 반환하기
-  if (str.length < 2) {
+  // (Base Case) str.length 가 1 이라면, true 반환하기
+  if (str.length === 1) {
     return true;
   }
 
-  const first = str[0];
-  const last = str[str.length - 1];
-  const rest = str.slice(0, str.length - 1).slice(1);
-
-  // (Base Case) str 첫번째 문자, 마지막 문자가 다르면, false 반환하기
-  if (first !== last) {
-    return false;
+  // (Base Case) str.length 가 2 라면,
+  if (str.length === 2) {
+    // str[0] === str[1] 반환하기
+    return str[0] === str[1];
   }
 
-  // isPalindrome 에 str 의 첫번째 문자, 마지막 문자를 제거하고 호출하고, 반환하기
-  return isPalindrome(rest);
+  // str[0] === str.slice(-1) 이라면,
+  if (str[0] === str.slice(-1)) {
+    // str.slice(1, -1) 재귀 호출하기
+    return isPalindrome(str.slice(1, -1));
+  }
+
+  // 아니라면, false 반환하기
+  return false;
 };
