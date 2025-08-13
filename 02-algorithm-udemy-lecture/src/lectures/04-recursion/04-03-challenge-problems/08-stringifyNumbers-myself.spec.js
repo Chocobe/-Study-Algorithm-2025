@@ -14,7 +14,7 @@ const obj1 = {
 
 const obj2 = {
   num: '1',
-  test: ['1'],
+  test: [1],
   data: {
     val: '4',
     info: {
