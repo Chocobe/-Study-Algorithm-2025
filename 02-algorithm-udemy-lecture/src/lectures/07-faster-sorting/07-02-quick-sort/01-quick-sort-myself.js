@@ -1,58 +1,54 @@
 /**
  * NOTE: Quick Sort (퀵 정렬)
- * => 배열에서 기준으로 사용하고 싶은 pivot number 를 선택한다.
- * => pivot 을 기준으로 작은값은 왼쪽, 큰 값은 오른쪽 배열로 옮긴다.
- * => 분할한 배열에 대하여, 재귀 호출한다.
- * => 배열의 길이가 0 ~ 1 이라면, 정렬된 상태이므로, Base Case 로 잡는다.
- * => [..왼쪽, pivot, ...오른쪽] 순서로 병합하여 Quick Sort 가 완료된다.
+ * 
+ * 1. 배열에서 기준값으로 사용할 임의의 요소를 pivot value 로 설택한다.
+ * => 아래 정리는 배열 첫번째 요소를 pivot value 로 선택한 흐름이다.
+ * 
+ * 2. 정렬은 재귀 호출로 진행된다.
+ * => pivot(arr, start = 0, end = 0)
+ * 
+ * 3. 배열 첫번째 요소를 pivot value 변수에 담고,
+ * => 각 재귀 회차 마지막에 pivot value 가 위치할 swap index 를 변수로 만들다.
+ * 
+ * 4. 배열을 순회하며,
+ * => pivot value 보다 작은 값이라면,
+ * => swap index++,
+ * => arr[현재 요소] 와 arr[swap index] 를 스왑한다.
+ * 
+ * 5. 배열 순회를 마쳤다면, 
+ * => pivot value 와 arr[swap index] 를 스왑한다.
+ * 
+ * 6. 마지막으로 swap index 를 반환한다.
  */
 
 /**
- * FIXME: 내가 푼 방식은 Space complexity 가 높다는 문제가 있다.
- * => left, right 를 매번 새로운 배열로 만들기 때문이다.
- */
-
-/**
+ * pivot helper 함수 구현해보기
+ * 
  * @param { number[] } arr
- * @returns { number[] }
+ * @param { number } start
+ * @param { number } end `end` 보다는 `last` 가 덜 헷갈릴 것 같다.
+ * @returns { number }
  */
-export function quickSort(arr) {
-  // (Base Case) arr.length < 2 라면,
-  if (arr.length < 2) {
-    // arr 반환하기
-    return arr;
-  }
-
-  // pivot 선택하기
-  const pivot = arr[0];
-  // left 배열 생성하기
-  let left = [];
-  // right 배열 생성하기
-  let right = [];
+export function pivot(arr, start = 0, end = arr.length - 1) {
+  // pivot 값
+  const pivotValue = arr[start];
+  // pivot swap index
+  let swapIndex = start;
 
   // arr 를 순회하며,
-  for (let i = 1; i < arr.length; i++) {
-    // arr[i] < pivot 이라면,
-    if (arr[i] < pivot) {
-      // left 에 push 하기
-      left.push(arr[i]);
-    }
-    // 아니라면,
-    else {
-      // right 에 push 하기
-      right.push(arr[i]);
+  for (let i = start; i <= end; i++) {
+    // pivot value < arr[i] 라면,
+    if (pivotValue > arr[i]) {
+      // swap index +1
+      swapIndex++;
+
+      // arr[swap index] 와 arr[i] 를 스왑하기
+      [arr[i], arr[swapIndex]] = [arr[swapIndex], arr[i]];
     }
   }
 
-  // left 에 대하여 재귀 호출하기
-  left = quickSort(left);
-  // right 에 대하여 재귀 호출하기
-  right = quickSort(right);
-
-  // left, pivot, right 병합하여 반환하기
-  return [
-    ...left,
-    pivot,
-    ...right
-  ];
-};
+  // arr[start] 와 arr[swap index] 스왑하기
+  [arr[start], arr[swapIndex]] = [arr[swapIndex], arr[start]];
+  // swap index 반환하기
+  return swapIndex
+}
