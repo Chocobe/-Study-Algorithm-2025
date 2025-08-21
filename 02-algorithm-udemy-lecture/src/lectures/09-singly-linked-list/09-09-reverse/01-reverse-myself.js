@@ -235,14 +235,8 @@ export class SinglyLinkedList {
   }
 
   reverse() {
-    // this.length < 2 라면,
-    if (this.length < 2) {
-      // this 반환하기
-      return this;
-    }
-
     // 새로운 head Node 변수 만들기
-    const newTailNode = this.get(0);
+    const newTailNode = this.head;
     // 새로운 nextNode 변수 만들기
     let newNextNode = null;
 

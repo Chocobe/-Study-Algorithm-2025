@@ -1,6 +1,6 @@
 import { SinglyLinkedList } from './01-reverse-myself';
 
-describe('09-09 / 01-reverse', () => {
+describe('09-09 / 01-reverse-myself', () => {
   it('list.reverse() => [5, 4, 3, 2, 1]', () => {
     const list = new SinglyLinkedList();
 
@@ -49,5 +49,7 @@ describe('09-09 / 01-reverse', () => {
 
     list.reverse();
     expect(list.get(0)).toBeNull();
+    expect(list.head).toBeNull();
+    expect(list.tail).toBeNull();
   });
 });
