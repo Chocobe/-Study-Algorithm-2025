@@ -58,8 +58,6 @@ export function radixSort(arr) {
     // bucket 초기화하기
     bucket = Array.from({ length: 10 }, () => []);
 
-    console.log('bucket: ', bucket);
-
     // arr 를 순회하며,
     for (let j = 0; j < arr.length; j++) {
       // 현재 요소의 i번째 숫자 구하기
