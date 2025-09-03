@@ -1,6 +1,6 @@
-import { solution } from './02-최소직사각형-gpt';
+import { solution } from './01-최소직사각형';
 
-describe('250903-최소직각사각형', () => {
+describe('250903 / 01-최소직각사각형', () => {
   it('solution([...]) === 4000', () => {
     const result = solution([[60, 50], [30, 70], [60, 30], [80, 40]]);
     expect(result).toBe(4000);

@@ -1,4 +1,12 @@
 /**
+ * 문제: _최소직사각형_
+ * 
+ * 난이도: _Level 1_
+ * 
+ * 성공여부: _성공_
+ * 
+ * @link https://school.programmers.co.kr/learn/courses/30/lessons/86491
+ * 
  * @param { number[][] } arr
  * @returns { number }
  */
