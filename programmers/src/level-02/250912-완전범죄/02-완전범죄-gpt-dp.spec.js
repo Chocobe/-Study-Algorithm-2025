@@ -9,7 +9,7 @@ info	                     n   m    result
  */
 
 describe('250912 / 02-완전범죄-gpt-dp', () => {
-  it.only('solution() === 2', () => {
+  it('solution() === 2', () => {
     const result = solution([[1, 2], [2, 3], [2, 1]], 4, 4);
     expect(result).toBe(2);
   });

@@ -12,7 +12,7 @@ describe('250910 / 01-프로세스', () => {
     expect(result).toBe(1);
   });
 
-  it.only('solution() === 5', () => {
+  it('solution() === 5', () => {
     const result = solution([1, 1, 9, 1, 1, 1], 0);
     expect(result).toBe(5);
   });

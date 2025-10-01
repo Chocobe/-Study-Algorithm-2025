@@ -23,7 +23,7 @@ describe('250908 / 01-체육복', () => {
     expect(result).toBe(2);
   });
 
-  it.only('solution() === 3', () => {
+  it('solution() === 3', () => {
     const result = solution(4, [2, 3], [3, 4]);
     expect(result).toBe(3);
   });

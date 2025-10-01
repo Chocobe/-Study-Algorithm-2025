@@ -6,7 +6,7 @@ scoville               K   return
  */
 
 describe('250916 / 01-더-맵게', () => {
-  it.only('solution() === 2', () => {
+  it('solution() === 2', () => {
     const result = solution([1, 2, 3, 9, 10, 12], 7);
     expect(result).toBe(2);
   });

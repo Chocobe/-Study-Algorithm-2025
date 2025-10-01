@@ -7,7 +7,7 @@ ingredient                    result
  */
 
 describe('250914 / 01-햄버거-만들기-gpt', () => {
-  it.only('solution() === 2', () => {
+  it('solution() === 2', () => {
     const result = solution([2, 1, 1, 2, 3, 1, 2, 3, 1]);
     expect(result).toBe(2);
   });
